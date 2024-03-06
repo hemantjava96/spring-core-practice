@@ -1,0 +1,23 @@
+package com.hk.config;
+
+import java.util.Date;
+
+import org.springframework.context.annotation.Bean;
+
+import com.hk.bean.WishMessageGenerator;
+
+public class Configuration {
+	@Bean(name = "date")
+	public Date date() {
+		return new Date();
+	}
+
+	@Bean(name = "wmg")
+	public WishMessageGenerator wishMessageGenerator() {
+		WishMessageGenerator wmg = new WishMessageGenerator("Good Morning...!");//constructor injection
+		wmg.setUser("hemant");
+		wmg.setDate(date()); // setter injection
+		return wmg;
+	}
+
+}

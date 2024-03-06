@@ -1,0 +1,15 @@
+//Spring Bean class (POJO class)
+package com.hk.beans;
+
+public class WishMessageGenerator {
+	
+	private String message;
+	
+	public WishMessageGenerator(String message) {
+		this.message = message;
+	}
+
+	public String sayHello(String user) {
+		return this.message+user;
+	}
+}

@@ -1,0 +1,9 @@
+package com.hk.beans;
+
+public class InstanceFactory {
+	
+	public MessageService getMessageService() {
+		return new MessageService();
+	}
+
+}

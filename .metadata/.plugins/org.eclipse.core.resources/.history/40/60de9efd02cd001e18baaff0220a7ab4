@@ -1,0 +1,28 @@
+package com.hk.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.hk.beans.WishMessageGenerator;
+import com.hk.cfgs.ApplicationContextBeanConfiguration;
+
+public class BeanManagementTest {
+
+    public static void main(String[] args) {
+        System.out.println("Start of main method");
+        
+        // Create the Spring application context with the configuration class
+        ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationContextBeanConfiguration.class);
+        
+        // Retrieve the bean from the context
+        WishMessageGenerator wmg = context.getBean("wmg", WishMessageGenerator.class);
+        
+        // Use the bean
+        System.out.println("Message: " + wmg.sayHello());
+        
+        // Close the context
+        ((AnnotationConfigApplicationContext) context).close();
+        
+        System.out.println("End of main method");
+    }
+}

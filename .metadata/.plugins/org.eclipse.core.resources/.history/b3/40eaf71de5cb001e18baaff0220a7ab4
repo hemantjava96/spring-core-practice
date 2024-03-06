@@ -1,0 +1,13 @@
+package com.hk.beans;
+
+public class Service {
+	private static Service service = new Service();
+	private Service() {
+		
+	}
+	
+	public static Service createInstance() {
+        return service;
+    }
+
+}

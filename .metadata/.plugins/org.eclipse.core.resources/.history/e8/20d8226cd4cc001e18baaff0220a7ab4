@@ -1,0 +1,34 @@
+package com.hk.test;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+
+import com.hk.beans.WishMessageGenerator;
+import com.hk.cfgs.ApplicationContextBeanConfiguration;
+
+@ComponentScan(basePackages = "com.hk.config")
+public class BeanManagementTest {
+
+	// spring 5.0.x doc
+	// https://docs.spring.io/spring-framework/docs/5.0.x/spring-framework-reference/
+
+	public static void main(String[] args) {
+		System.out.println("stat of main(-) method");
+		// Create the Spring application context with component scanning
+		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationContextBeanConfiguration.class);
+		// Refresh the context to initialize it
+		((AnnotationConfigApplicationContext) context).refresh();
+
+		// Retrieve the bean from the context
+		WishMessageGenerator wmg = context.getBean("wmg", WishMessageGenerator.class);
+
+		// Use the bean
+		System.out.println("Message: " + wmg.sayHello());
+
+		// Close the context
+		((AnnotationConfigApplicationContext) context).close();
+		System.out.println("end of main(-) method");
+	}
+
+}

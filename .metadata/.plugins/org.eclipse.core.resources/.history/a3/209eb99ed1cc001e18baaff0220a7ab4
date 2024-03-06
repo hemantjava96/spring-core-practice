@@ -1,0 +1,59 @@
+package com.hk.cfgs;
+
+import java.util.Calendar;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.hk.beans.InstanceFactory;
+import com.hk.beans.MessageService;
+import com.hk.beans.Service;
+
+@Configuration
+public class ApplicationContextBeanConfiguration {
+    
+    @Bean
+    public Service service() {
+        return Service.createInstance();
+    }
+    
+    @Bean
+    public InstanceFactory instanceFactory() {
+        return new InstanceFactory();
+    }
+    
+    @Bean
+    public MessageService messageService(InstanceFactory instanceFactory) {
+        return instanceFactory.getMessageService();
+    }
+    
+    @Bean
+    public Class<?> c1() throws ClassNotFoundException {
+        return Class.forName("java.util.Date");
+    }
+    
+    @Bean
+    public Calendar cal() {
+        return Calendar.getInstance();
+    }
+    
+    @Bean
+    public String s1() {
+        return new String("hello");
+    }
+    
+    @Bean
+    public String s2(String s1) {
+        return s1.concat(" Dear");
+    }
+    
+    @Bean
+    public StringBuffer s3() {
+        return new StringBuffer("hello how are u?");
+    }
+    
+    @Bean
+    public String s4(StringBuffer s3) {
+        return s3.substring(0, 5);
+    }
+}

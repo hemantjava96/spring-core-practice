@@ -1,0 +1,6 @@
+package com.hk.beans;
+
+public class Service {
+	private static Service service;
+
+}
