@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Define JDBC Connection bean -->
+	<bean id="JDBCConnection" class="java.sql.DriverManager" factory-method="getConnection" scope="prototype">
+	    <constructor-arg value="jdbc:mysql://localhost:3306/demo"/>
+	    <constructor-arg value="root"/>
+	    <constructor-arg value="root"/>
+	</bean>
+	
+	<!-- Define JDBC Statement bean -->
+	<bean id="JDBCStatement" factory-bean="JDBCConnection" factory-method="createStatement" scope="prototype"/>
+		<!-- more bean definitions go here -->
+</beans>        

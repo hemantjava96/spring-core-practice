@@ -26,6 +26,7 @@ public class BeanManagementTest {
 		DataSource dataSource = applicationContext.getBean("dataSource", DataSource.class);
 
 		fetchAndDisplayRecords(dataSource);
+		fetchAndDisplayRecords(dataSource);
 		
 		((AbstractApplicationContext) applicationContext).close();
 
@@ -54,7 +55,7 @@ public class BeanManagementTest {
                 System.out.println(name + ": " + aadharNumber);
             }			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
             // Close resources in finally block to ensure proper cleanup
             try {
